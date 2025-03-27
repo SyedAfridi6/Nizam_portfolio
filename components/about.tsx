@@ -8,7 +8,7 @@ export default function About() {
   const expertiseAreas = [
     {
       icon: <LineChart className="h-10 w-10 text-primary" />,
-      title: "DataAnalysis",
+      title: "Data Analysis",
       description: "Turning raw data into actionable insights with a strong analytical mindset.",
     },
     {
