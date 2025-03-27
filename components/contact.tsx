@@ -24,47 +24,55 @@ export default function Contact() {
   }
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // In a real application, you would handle form submission here
-    console.log("Form submitted:", formData)
-    alert("Thank you for your message! I'll get back to you soon.")
+    e.preventDefault();
+  
+    const { name, email, subject, message } = formData;
+  
+    // Construct the mailto link
+    const mailtoLink = `mailto:recipient@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message + "\n\nBest regards,\n" + "From: " + name + " (" + email + ")")}`;
+  
+    // Open default mail client
+    window.location.href = mailtoLink;
+  
+    // Reset the form
     setFormData({
       name: "",
       email: "",
       subject: "",
       message: "",
-    })
-  }
+    });
+  };
+  
 
   const contactInfo = [
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
       title: "Email",
-      value: "contact@example.com",
-      link: "mailto:contact@example.com",
+      value: "Nizam's Mail",
+      link: "mailto:nizam.jayalapdeen@gmail.com",
     },
-    {
-      icon: <Phone className="h-5 w-5 text-primary" />,
-      title: "Phone",
-      value: "+1 (123) 456-7890",
-      link: "tel:+11234567890",
-    },
+    // {
+    //   icon: <Phone className="h-5 w-5 text-primary" />,
+    //   title: "Phone",
+    //   value: "+1 (123) 456-789",
+    //   link: "tel:+11234567890",
+    // },
     {
       icon: <MapPin className="h-5 w-5 text-primary" />,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "Chennai, Tamil Nadu",
       link: null,
     },
     {
       icon: <Linkedin className="h-5 w-5 text-primary" />,
       title: "LinkedIn",
-      value: "linkedin.com/in/nizam",
+      value: "Nizam's LinkedIn",
       link: "https://linkedin.com/in/",
     },
     {
       icon: <Github className="h-5 w-5 text-primary" />,
       title: "GitHub",
-      value: "github.com/Nizamud33n",
+      value: "Nizam's Github",
       link: "https://github.com/Nizamud33n",
     },
   ]
@@ -122,7 +130,7 @@ export default function Contact() {
                   <div className="flex gap-4">
                     <Button variant="outline" size="icon" asChild>
                       <a
-                        href="https://linkedin.com/in/"
+                        href="https://www.linkedin.com/in/nizamudeen-j?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn"
@@ -223,4 +231,3 @@ export default function Contact() {
     </section>
   )
 }
-
