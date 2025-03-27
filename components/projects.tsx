@@ -1,10 +1,10 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardFooter } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import { BarChart, LineChart, ExternalLink } from "lucide-react"
+import { motion } from "framer-motion";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { BarChart, LineChart, ExternalLink } from "lucide-react";
 
 export default function Projects() {
   const projects = [
@@ -18,6 +18,7 @@ export default function Projects() {
       ],
       tools: ["Power BI", "Data Analysis", "Marketing Analytics"],
       icon: <BarChart className="h-10 w-10 text-primary" />,
+      link: "https://github.com/Nizamud33n/Capstone-project", // ✅ Add project link
     },
     {
       title: "Customer Conversion Prediction",
@@ -28,10 +29,16 @@ export default function Projects() {
         "Created new features (e.g., clicks per open, ad spend per conversion) and visualized relationships (e.g., click through rate vs. ad spend) to enhance campaign insights.",
         "Identified higher conversion rates for females and provided recommendations to improve audience targeting for increased conversions.",
       ],
-      tools: ["Machine Learning", "Python", "Random Forest", "Feature Engineering"],
+      tools: [
+        "Machine Learning",
+        "Python",
+        "Random Forest",
+        "Feature Engineering",
+      ],
       icon: <LineChart className="h-10 w-10 text-primary" />,
+      link: "https://github.com/Nizamud33n/HULU", // ✅ Add project link
     },
-  ]
+  ];
 
   return (
     <section id="projects" className="section-container">
@@ -55,8 +62,12 @@ export default function Projects() {
               <Card className="h-full flex flex-col card-hover">
                 <CardContent className="p-6 flex-grow">
                   <div className="mb-4">{project.icon}</div>
-                  <h3 className="text-2xl font-semibold mb-3">{project.title}</h3>
-                  <p className="mb-4 text-muted-foreground">{project.description}</p>
+                  <h3 className="text-2xl font-semibold mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="mb-4 text-muted-foreground">
+                    {project.description}
+                  </p>
 
                   <h4 className="font-medium mb-2">Key Achievements:</h4>
                   <ul className="space-y-2 mb-6">
@@ -77,10 +88,17 @@ export default function Projects() {
                   </div>
                 </CardContent>
                 <CardFooter className="px-6 pb-6 pt-0">
-                  <Button variant="outline" className="w-full" disabled>
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Project
-                  </Button>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full"
+                  >
+                    <Button variant="outline" className="w-full">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Project
+                    </Button>
+                  </a>
                 </CardFooter>
               </Card>
             </motion.div>
@@ -88,6 +106,5 @@ export default function Projects() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
-
